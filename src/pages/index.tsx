@@ -12,7 +12,7 @@ export default function Home() {
       <Head>
         <title>LoL Aram Randomizer</title>
         <meta name="description" content="Aram randomizer By Omer Cem Turan" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=800px, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NameEntry />
