@@ -1,0 +1,33 @@
+@import "../hex/breakpoints.scss";
+
+.championSelect {
+	display: grid;
+	gap: 10px;
+	grid-template-areas:
+		'team1 actions team2';
+
+	@include respond-below(sm) {
+		grid-template-areas:
+			'team1 team2'
+			'actions actions';
+	}
+
+	@include respond-below(xs) {
+		grid-template-areas:
+			'team1'
+			'team2'
+			'actions';
+	}
+
+	.team1 {
+		grid-area: team1;
+	}
+
+	.team2 {
+		grid-area: team2;
+	}
+
+	.actions {
+		grid-area: actions;
+	}
+}

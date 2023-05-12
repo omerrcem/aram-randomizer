@@ -1,0 +1,9 @@
+@import "../variables.scss";
+
+.input {
+	height: 40px;
+	&:focus {
+		outline: none !important;
+		border: solid 1px $gold-one!important;
+	}
+}

@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+.textarea {
+	padding: 5px 10px;
+	width: 300px;
+	resize: none;
+
+	&:focus {
+		outline: none !important;
+		border: solid 1px $gold-one!important;
+	}
+}

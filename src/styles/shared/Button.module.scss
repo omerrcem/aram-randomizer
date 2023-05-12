@@ -1,0 +1,44 @@
+@import "../variables.scss";
+
+.button {
+	transition: all .1s ease-in-out;
+	&.primary {
+		background: $grey-three;
+		border: 1px solid $gold-four;
+		color: $gold-one;
+		min-width: 70px;
+
+		&:hover {
+			background: $grey-half;
+		}
+
+		&:disabled {
+			background: $hextec;
+			color: $grey-half;
+		}
+	}
+
+	&.magic {
+		transition: background-color .3s ease-in-out;
+
+		background: linear-gradient(rgba($blue-seven, 1), rgba($blue-five, 1));
+		color: $gold-one;
+		border: 3px solid $blue-three;
+
+		&:hover {
+			background: linear-gradient(rgba($blue-six, 1), rgba($blue-four, 1));
+		}
+	}
+
+	&.hextec {
+		transition: background-color .3s ease-in-out;
+
+		background: linear-gradient(rgba($gold-six, 1), rgba($gold-five, 1));
+		color: $gold-one;
+		border: 3px solid $gold-three;
+
+		&:hover {
+			background: linear-gradient(rgba($gold-five, 1), rgba($gold-four, 1));
+		}
+	}
+}

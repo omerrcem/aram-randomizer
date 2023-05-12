@@ -1,0 +1,9 @@
+@import "../variables.scss";
+
+.layout {
+	min-height: 100vh;
+	background-image:
+	linear-gradient(to bottom, rgba($blue-six, .9) 1%, rgba($blue-six, .1) 95%), url("../../../public/howl.webp");
+	background-size: cover;
+    background-position: center;
+}

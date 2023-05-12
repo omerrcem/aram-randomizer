@@ -1,0 +1,27 @@
+$class-slug: fs !default;
+
+.fs-inherit {
+	font-size: inherit;
+}
+
+@for $i from 9 through 80 {
+	.#{$class-slug}-#{$i} {
+		font-size: calc(#{$i} * 1rem / 14);
+	}
+}
+
+.w-100-p {
+	width: 100%;
+}
+
+.h-100-p {
+	height: 100%;
+}
+
+.w-auto {
+	width: auto;
+}
+
+.h-auto {
+	height: auto;
+}

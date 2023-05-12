@@ -5,11 +5,37 @@ body {
 
 }
 
+
+
 @font-face {
-  font-family: 'LolFont';
+  font-family: 'Spiegel';
+  src: url('../../public/asset/Spiegel-Regular.otf');
+}
+
+@font-face {
+  font-family: 'SpiegelBold';
+  src: url('../../public/asset/Spiegel-Bold.otf');
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../../public/asset/BeaufortforLOL-Regular.otf');
+}
+
+@font-face {
+  font-family: 'BeaufortLight';
+  src: url('../../public/asset/BeaufortforLOL-Light.otf');
+}
+
+@font-face {
+  font-family: 'BeaufortMedium';
   src: url('../../public/asset/BeaufortforLOL-Medium.otf');
-  font-weight: 100;
-  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BeaufortBold';
+  font-weight: 700;
+  src: url('../../public/asset/BeaufortforLOL-Bold.otf');
 }
 
 html {
@@ -18,18 +44,32 @@ html {
   font-family: LolFont;
 }
 
-.disp-flex {
-  display: flex;
+.Beaufort {
+  font-family: Beaufort;
+  font-weight: 400;
 }
 
-.train__center {
-  align-items: center;
+.BeaufortMedium {
+  font-family: BeaufortMedium;
+  font-weight: 400;
 }
 
-.train__justify-center {
-  justify-content: center;
+.BeaufortLight {
+  font-family: BeaufortLight;
+  font-weight: 400;
 }
 
-.fs-title {
-  font-size: 30px;
+.BeaufortBold {
+  font-family: BeaufortBold;
+  font-weight: 700;
+}
+
+.Spiegel {
+  font-family: Spiegel;
+  font-weight: 400;
+}
+
+.SpiegelBold {
+  font-family: SpiegelBold;
+  font-weight: 700;
 }

@@ -1,0 +1,21 @@
+
+@import "./variables.scss";
+@import "./common.scss";
+@import "./hex/backgrounds.scss";
+@import "./hex/breakpoints.scss";
+
+$theme-colors: (
+  "primary": $gold-one,
+  "secondary": $gold-four,
+  "danger": #ff4136,
+  "hextec": $hextec,
+  "gold-six": $gold-six,
+  "grey-half": $grey-half,
+  "grey-three": $grey-three,
+  "blue-five": $blue-five,
+  "blue-six": $blue-six,
+  "blue-seven": $blue-seven,
+  "grey-cool": $grey-cool
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";

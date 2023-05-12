@@ -9,15 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.0.1",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
     "axios": "^1.4.0",
+    "babel-plugin-inline-react-svg": "^2.0.2",
+    "bootstrap": "^5.2.3",
+    "classnames": "^2.3.2",
+    "clipboardy": "^3.0.0",
+    "css-loader": "^6.7.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "mini-css-extract-plugin": "^2.7.5",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^19.0.4"
   }
 }

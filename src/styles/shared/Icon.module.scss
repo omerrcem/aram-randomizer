@@ -1,0 +1,16 @@
+@import "../variables.scss";
+
+.icon {
+	& > path {
+		fill: currentColor;
+		color: inherit;
+	}
+}
+
+.clickable {
+	cursor: pointer;
+
+	&:hover {
+		color: $gold-four!important;
+	}
+}

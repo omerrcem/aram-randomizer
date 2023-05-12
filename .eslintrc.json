@@ -1,3 +1,31 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "airbnb"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": "off",
+    "react/function-component-definition": "off",
+    "react/button-has-type": "off",
+    "react/jsx-indent": [2, "tab"],
+    "react/jsx-indent-props": [2, "tab"],
+    "import/no-extraneous-dependencies": "off",
+    "arrow-parens": "off",
+    "no-shadow": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
+    "indent": ["error", "tab"],
+    "no-tabs": "off",
+    "react/prop-types": "off",
+    "no-use-before-define": "off",
+    "arrow-body-style": "off",
+    "linebreak-style": "off"
+  }
 }
