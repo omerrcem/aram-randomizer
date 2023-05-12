@@ -1,4 +1,4 @@
-import { useChamps, shuffleAndSplitList } from '@/helper';
+import { getChamps, shuffleAndSplitList } from '@/helper';
 import { useEffect, useState } from 'react';
 
 enum View {
@@ -17,7 +17,7 @@ const MainPage = () => {
 	};
 
 	useEffect(() => {
-		useChamps(setChamps);
+		getChamps(setChamps);
 	}, []);
 
 	useEffect(() => {
