@@ -20,8 +20,8 @@ const Roll = ({ summoners, setSummoners, options, setOptions }) => {
 		const encoded = localStorage.getItem('summoners');
 		if (!encoded) return;
 		const parsed = JSON.parse(Buffer.from(encoded, 'base64').toString());
-		setSummoners(parsed?.summoners);
-		setOptions(parsed?.options)
+		setSummoners(parsed?.summoners || []);
+		setOptions(parsed?.options || {})
 	};
 
 	useEffect(() => {
