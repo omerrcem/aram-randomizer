@@ -27,7 +27,13 @@ const Actions = ({
 
 	return (
 		<div className={classNames('p-3 mx-auto', styles.actions)}>
-			<div style={{ maxWidth: 300 }} className="p-4 d-flex justify-content-center border border-grey-cool bg-grey-three">
+			<div
+				style={{ maxWidth: 300 }}
+				className={classNames(
+					'p-4 d-flex justify-content-center border border-grey-cool bg-grey-three',
+					styles.box,
+				)}
+			>
 				<div className="d-grid gap-2">
 					<Button className="mb-5" onClick={handleBack}>
 						<Icon iconType={IconType.BACK} iconSize={IconSize.SMALLER} />

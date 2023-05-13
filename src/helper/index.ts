@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const shuffleAndSplitList = list => {
 	const shuffledList = list.sort(() => Math.random() - 0.5);
@@ -21,4 +22,30 @@ export const getChamps = async setCallback => {
 	const champs = champPromise.data.data;
 
 	setCallback(Object.keys(champs).map(champ => ({ champ, icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ}.png` })));
+};
+
+export const useTimeCounter = ({
+	maxCount, cancel, dependencies, delay = 350,
+}) => {
+	const [animationIndex, setAnimationIndex] = useState(0);
+
+	const handleIncrease = () => {
+		setTimeout(() => {
+			setAnimationIndex(prev => prev + 1);
+		}, delay);
+	};
+
+	useEffect(() => {
+		setAnimationIndex(0);
+	}, []);
+
+	useEffect(() => {
+		if (animationIndex < maxCount && !cancel) handleIncrease();
+	}, [animationIndex, maxCount]);
+
+	useEffect(() => {
+		setAnimationIndex(0);
+	}, [...dependencies]);
+
+	return animationIndex;
 };

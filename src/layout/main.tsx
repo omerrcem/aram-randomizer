@@ -17,11 +17,11 @@ const Layout = ({ children }) => {
 				<div className="container py-5">
 					<div className="border border-secondary Spiegel p-3 text-primary bg-hextec">
 
-						<div className="text-secondary text-center py-5">
+						<div className="text-secondary text-center m-auto py-5" style={{ maxWidth: 600 }}>
 							<h5 className="BeaufortBold">
 								ARAM Randomizer
 							</h5>
-							<h1 className="BeaufortBold text-primary display-1">
+							<h1 className="BeaufortBold text-primary display-3">
 								JAK'SHO
 							</h1>
 							<div className="w-100-p d-flex mt-4 justify-content-center">

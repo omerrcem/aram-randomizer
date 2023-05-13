@@ -1,10 +1,15 @@
 @import "../hex/breakpoints.scss";
+@import "../variables.scss";
 
 .championSelect {
 	display: grid;
 	gap: 10px;
 	grid-template-areas:
 		'team1 actions team2';
+
+	@include respond-above(sm) {
+		grid-template-columns: 1fr 230px 1fr;
+	}
 
 	@include respond-below(sm) {
 		grid-template-areas:
@@ -29,5 +34,78 @@
 
 	.actions {
 		grid-area: actions;
+
+		.box {
+			box-shadow: 0 0 10px $blue-three;
+			animation: magicShadow 10s infinite, alternate;
+		}
+
+		@keyframes magicShadow {
+			0% {
+				box-shadow: 0 0 25px $blue-four;
+			}
+			33% {
+				box-shadow: 0 0 15px $blue-three;
+			}
+			66% {
+				box-shadow: 0 0 25px $blue-four
+			}
+			100% {
+				box-shadow: 0 0 10px $blue-four;
+			}
+		}
+	}
+
+	.summoner {
+		animation-name: fadeUp;
+		animation-duration: 1s;
+
+		transition: all 250ms ease-in-out;
+
+		&.hidden {
+			opacity: 0;
+			transform: translateY(50px);
+		}
+
+		@keyframes fadeUp {
+			from {
+				transform: translateY(50px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+	}
+
+	.champions {
+		transition: all 250ms ease-in-out;
+
+		&.hidden {
+			opacity: 0;
+		}
+	}
+
+	.champion {
+		animation-name: fadeLeft;
+		animation-duration: 1s;
+		transition: all 250ms ease-in-out;
+
+		&.hidden {
+			opacity: 0;
+			transform: translateX(20px);
+		}
+
+		@keyframes fadeLeft {
+			from {
+				transform: translateX(10px);
+				opacity: 0;
+			}
+			to {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
 	}
 }

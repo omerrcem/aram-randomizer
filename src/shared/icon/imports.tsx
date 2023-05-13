@@ -4,7 +4,9 @@ import champ from '../../../public/icons/champ.svg';
 import refresh from '../../../public/icons/refresh.svg';
 import back from '../../../public/icons/return.svg';
 import copy from '../../../public/icons/copy.svg';
+import minus from '../../../public/icons/minus.svg';
+import plus from '../../../public/icons/plus.svg';
 
 export default {
-	cancel, champ, dice, refresh, back, copy,
+	cancel, champ, dice, refresh, back, copy, minus, plus,
 };

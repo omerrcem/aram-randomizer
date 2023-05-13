@@ -8,7 +8,9 @@ export enum IconType {
 	CHAMP = 'champ',
 	REFRESH = 'refresh',
 	BACK = 'back',
-	COPY = 'copy'
+	COPY = 'copy',
+	PLUS = 'plus',
+	MINUS = 'minus'
 }
 
 export enum IconSize {
@@ -45,7 +47,7 @@ const Icon = props => {
 		<span
 			{...props}
 			style={{ color: variant }}
-			className={classNames(styles.icon, clickable && styles.clickable)}
+			className={classNames('d-flex align-items-center',styles.icon, clickable && styles.clickable)}
 		>
 			<SVG
 				stroke="currentColor"

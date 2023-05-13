@@ -1,13 +1,16 @@
 import Button, { ButtonThemes } from '@/shared/button';
 import Icon, { IconSize, IconType } from '@/shared/icon';
+import Stepper from '@/shared/stepper';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const Roll = ({ summoners, setSummoners }) => {
+const Roll = ({ summoners, setSummoners, options, setOptions }) => {
 	const router = useRouter();
 
+	const data = { summoners, options };
+
 	const onSave = () => {
-		const stringfied = JSON.stringify(summoners);
+		const stringfied = JSON.stringify(data);
 		const encoded = Buffer.from(stringfied).toString('base64');
 		localStorage.setItem('summoners', encoded);
 		router.push(`/roll?data=${encoded}`);
@@ -17,7 +20,8 @@ const Roll = ({ summoners, setSummoners }) => {
 		const encoded = localStorage.getItem('summoners');
 		if (!encoded) return;
 		const parsed = JSON.parse(Buffer.from(encoded, 'base64').toString());
-		setSummoners(parsed);
+		setSummoners(parsed?.summoners);
+		setOptions(parsed?.options)
 	};
 
 	useEffect(() => {

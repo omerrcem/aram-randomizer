@@ -10,25 +10,38 @@ const ChampSelect = () => {
 	const router = useRouter();
 	const { data } = router.query;
 	const [summoners, setSummoners] = useState([]);
+	const [options, setOptions] = useState({ champCount: 2 });
 	const [champs, setChamps] = useState([]);
 	const [champsSplitted, setChampsSplitted] = useState([]);
 	const [summonersSplitted, setSummonersSplitted] = useState([]);
+	const [champsHidden, setChampsHidden] = useState(false);
+	const [teamsHidden, setTeamsHidden] = useState(false);
 
-	const MULTIPLIER = 2;
+	const { champCount = 2 } = options;
 
 	const resetSummoners = () => {
-		setSummonersSplitted(shuffleAndSplitList(summoners));
+		setTeamsHidden(true);
+		resetChamps();
+		setTimeout(() => {
+			setTeamsHidden(false);
+			setSummonersSplitted(shuffleAndSplitList(summoners));
+		}, 500);
 	};
 
 	const resetChamps = () => {
-		setChampsSplitted(shuffleAndSplitList(champs));
+		setChampsHidden(true);
+		setTimeout(() => {
+			setChampsHidden(false);
+			setChampsSplitted(shuffleAndSplitList(champs));
+		}, 500);
 	};
 
 	useEffect(() => {
 		if (!data) return;
 		const parsed = JSON.parse(Buffer.from(data as string, 'base64').toString());
-		setSummoners(parsed);
-		setSummonersSplitted(shuffleAndSplitList(parsed));
+		setSummoners(parsed?.summoners);
+		setOptions(parsed?.options)
+		setSummonersSplitted(shuffleAndSplitList(parsed?.summoners));
 		getChamps(val => {
 			setChamps(val);
 			setChampsSplitted(shuffleAndSplitList(val));
@@ -42,21 +55,25 @@ const ChampSelect = () => {
 				team={summonersSplitted[0]}
 				champs={champsSplitted[0]}
 				index={1}
-				multiplier={MULTIPLIER}
+				multiplier={champCount}
+				champsHidden={champsHidden}
+				teamsHidden={teamsHidden}
 			/>
 			<Actions
 				allChamps={champsSplitted}
 				allSummoners={summonersSplitted}
 				resetSummoners={resetSummoners}
 				resetChamps={resetChamps}
-				multiplier={MULTIPLIER}
+				multiplier={champCount}
 			/>
 			<Team
 				className={styles.team2}
 				team={summonersSplitted[1]}
 				champs={champsSplitted[1]}
 				index={2}
-				multiplier={MULTIPLIER}
+				multiplier={champCount}
+				champsHidden={champsHidden}
+				teamsHidden={teamsHidden}
 			/>
 		</div>
 	);
