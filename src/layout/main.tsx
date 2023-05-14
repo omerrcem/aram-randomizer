@@ -8,9 +8,12 @@ const Layout = ({ children }) => {
 	return (
 		<div>
 			<Head>
-				<title>LoL Aram Randomizer</title>
-				<meta name="description" content="Aram randomizer By Omer Cem Turan" />
-				<meta name="viewport" content="width=800px, initial-scale=1" />
+				<title>Jak'Sho Aram Randomizer</title>
+				<meta name="author" content="Ömer Cem Turan" />
+				<meta name="keywords" content="League of Legends, LoL, ARAM, Random, Player, Champion, Summoner, Randomizer, RNG, Matchup, VS" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="description" content="Get ready for unpredictable battles with Jak'Sho, ARAM Randomizer 
+          for League of Legends. Embrance the power of RNG and matchup with your friends for a thrilling game." />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className={classNames(styles.layout)}>

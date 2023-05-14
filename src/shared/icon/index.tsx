@@ -39,6 +39,7 @@ const Icon = props => {
 		variant = IconVariant.GOLD_ONE,
 		iconSize = IconSize.MEDIUM,
 		clickable = false,
+		className,
 	} = props;
 
 	const SVG = imports[iconType];
@@ -47,7 +48,8 @@ const Icon = props => {
 		<span
 			{...props}
 			style={{ color: variant }}
-			className={classNames('d-flex align-items-center',styles.icon, clickable && styles.clickable)}
+			className={classNames('d-flex align-items-center',
+			styles.icon, clickable && styles.clickable, className)}
 		>
 			<SVG
 				stroke="currentColor"
