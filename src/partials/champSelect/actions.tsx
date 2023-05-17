@@ -18,7 +18,7 @@ const Actions = ({
 		const text = [0, 1].map(teamIndex => {
 			const champCount = (allSummoners?.[teamIndex]?.length || 0) * multiplier;
 			return [
-				allSummoners?.[teamIndex]?.join(', '),
+				allSummoners?.[teamIndex].map(summoner => summoner.name)?.join(', '),
 				allChamps?.[teamIndex]?.map(c => c.champ).slice(0, champCount).join(', '),
 			].join('\n');
 		}).join('\n\n');
