@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getChamps, shuffleAndSplitList } from '@/helper';
+import { getChamps, shuffleAndSplitList, shuffleTeam } from '@/helper';
 import styles from '@/styles/partials/ChampionSelect.module.scss';
 import classNames from 'classnames';
 import Team from './team';
@@ -24,7 +24,7 @@ const ChampSelect = () => {
 		resetChamps();
 		setTimeout(() => {
 			setTeamsHidden(false);
-			setSummonersSplitted(shuffleAndSplitList(summoners));
+			setSummonersSplitted(shuffleTeam(summoners));
 		}, 500);
 	};
 
@@ -41,7 +41,7 @@ const ChampSelect = () => {
 		const parsed = JSON.parse(Buffer.from(data as string, 'base64').toString());
 		setSummoners(parsed?.summoners);
 		setOptions(parsed?.options)
-		setSummonersSplitted(shuffleAndSplitList(parsed?.summoners));
+		setSummonersSplitted(shuffleTeam(parsed?.summoners));
 		getChamps(val => {
 			setChamps(val);
 			setChampsSplitted(shuffleAndSplitList(val));

@@ -9,6 +9,7 @@ body {
 
 @font-face {
   font-family: 'Spiegel';
+  font-weight: 100;
   src: url('../../public/asset/Spiegel-Regular.otf');
 }
 

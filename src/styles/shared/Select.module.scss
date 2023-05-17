@@ -1,0 +1,14 @@
+@import "../variables.scss";
+
+.select {
+	max-height: 50px;
+	font-family: Spiegel;
+	font-size: 12px;
+	text-align: left;
+
+	.control {
+		box-shadow: none!important;
+		font-size: 12px;
+		cursor: pointer;
+	}
+}

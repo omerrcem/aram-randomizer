@@ -1,6 +1,32 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+export const VERSION = "1.0.0"
+
+export const shuffleTeam = summoners => {
+	const firstTeam = [...summoners.filter(summoner => summoner.team === 0 )];
+	const secondTeam = [...summoners.filter(summoner => summoner.team === 1 )];
+	const randoms = [...summoners.filter(summoner => summoner.team === 2 )];
+
+	randoms.sort(() => Math.random() - 0.5)
+
+	randoms.forEach(summoner => {
+		switch (true) {
+			case firstTeam.length < secondTeam.length:
+				firstTeam.push(summoner);
+				break;
+			case firstTeam.length > secondTeam.length:
+				secondTeam.push(summoner);
+				break;
+			default:
+				[firstTeam, secondTeam][Math.round(Math.random())].push(summoner)
+				break;
+		}
+	});
+
+	return [firstTeam, secondTeam];
+}
+
 export const shuffleAndSplitList = list => {
 	const shuffledList = list.sort(() => Math.random() - 0.5);
 	const halfLength = Math.floor(shuffledList.length / 2);

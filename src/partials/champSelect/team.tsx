@@ -37,7 +37,7 @@ const Team = ({
 			<div className="d-flex flex-column gap-3 my-3">
 				{team?.slice(0, animationIndex).map(summoner => (
 					<div className={classNames(
-						'd-flex p-2 fs-18 border-bottom border-gold-six pb-3 align-items-center gap-3',
+						'd-flex p-2 fs-16 border-bottom border-gold-six pb-3 align-items-center gap-3',
 						{ 'flex-row-reverse': right },
 						teamsHidden && styles.hidden,
 						styles.summoner,
@@ -49,7 +49,7 @@ const Team = ({
 						>
 							<Icon iconType={IconType.CHAMP} iconSize={IconSize.SMALLER} />
 						</div>
-						{summoner}
+						{summoner.name}
 					</div>
 				))}
 			</div>

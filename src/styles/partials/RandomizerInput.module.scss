@@ -1,3 +1,15 @@
 .randomizerInput {
 	min-height: 500px;
+
+	.summoner {
+		display: grid;
+		align-items: center;
+		gap: 5px;
+		grid-template-columns: 1fr 100px 40px;
+
+		.name {
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
 }

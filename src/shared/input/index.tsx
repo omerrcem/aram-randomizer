@@ -18,7 +18,7 @@ const Input = props => {
 	return (
 		<input
 			{...props}
-			className={classNames('ph-2 w-100-p fs-16 bg-blue-seven text-primary border border-grey-half', styles.input)}
+			className={classNames('px-3 w-100-p fs-14 bg-blue-seven text-primary border border-grey-half', styles.input)}
 			type="text"
 			onChange={onTextEnter}
 			onKeyDown={handleKeyDown}
