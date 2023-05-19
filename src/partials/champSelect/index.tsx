@@ -6,13 +6,8 @@ import classNames from 'classnames';
 import Team from './team';
 import Actions from './actions';
 
-const ChampSelect = () => {
-	const router = useRouter();
-	const { data } = router.query;
-	const [summoners, setSummoners] = useState([]);
-	const [options, setOptions] = useState({ champCount: 2 });
-	const [champs, setChamps] = useState([]);
-	const [champsSplitted, setChampsSplitted] = useState([]);
+const ChampSelect = ({ summoners, options, champs }) => {
+	const [champsSplitted, setChampsSplitted] = useState(shuffleAndSplitList(champs));
 	const [summonersSplitted, setSummonersSplitted] = useState([]);
 	const [champsHidden, setChampsHidden] = useState(false);
 	const [teamsHidden, setTeamsHidden] = useState(false);
@@ -37,16 +32,8 @@ const ChampSelect = () => {
 	};
 
 	useEffect(() => {
-		if (!data) return;
-		const parsed = JSON.parse(Buffer.from(data as string, 'base64').toString());
-		setSummoners(parsed?.summoners);
-		setOptions(parsed?.options)
-		setSummonersSplitted(shuffleTeam(parsed?.summoners));
-		getChamps(val => {
-			setChamps(val);
-			setChampsSplitted(shuffleAndSplitList(val));
-		});
-	}, [data]);
+		setSummonersSplitted(shuffleTeam(summoners));
+	}, [summoners]);
 
 	return (
 		<div className={classNames('p-3 pos-rel', styles.championSelect)} style={{ minHeight: 600 }}>

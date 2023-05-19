@@ -1,7 +1,32 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export const VERSION = "1.0.0"
+export const VERSION = "1.1.0"
+
+export enum TeamOptions {
+	TEAM_1 = 0,
+	TEAM_2,
+	RNG,
+	EMPTY
+}
+
+export const TeamOptionsLabel = {
+	[TeamOptions.TEAM_1]: 'Team 1',
+	[TeamOptions.TEAM_2]: 'Team 2',
+	[TeamOptions.RNG]: 'RNG',
+	[TeamOptions.EMPTY]: 'Empty',
+}
+
+export const TEAM_OPTIONS = [
+	{ label: 'Team 1', value: 0 },
+	{ label: 'Team 2', value: 1 },
+	{ label: 'RNG', value: 2 }
+]
+
+export const EMPTY_SUMMONER = {
+	name: '',
+	team: TeamOptions.EMPTY
+}
 
 export const shuffleTeam = summoners => {
 	const firstTeam = [...summoners.filter(summoner => summoner.team === 0 )];
@@ -24,6 +49,20 @@ export const shuffleTeam = summoners => {
 		}
 	});
 
+	const maxTeamSize = Math.max(firstTeam.length, secondTeam.length);
+
+	if (firstTeam.length < maxTeamSize) {
+		[...Array(maxTeamSize - firstTeam.length)].map((_, index) => {
+			firstTeam.push({ ...EMPTY_SUMMONER, name: index.toString()});	
+		})
+	}
+
+	if (secondTeam.length < maxTeamSize) {
+		[...Array(maxTeamSize - secondTeam.length)].map((_, index) => {
+			secondTeam.push({ ...EMPTY_SUMMONER, name: index.toString()});	
+		})
+	}
+
 	return [firstTeam, secondTeam];
 }
 
@@ -42,12 +81,17 @@ export const getChamps = async setCallback => {
 	const versionPromise = await axios.get(VERSION_URL);
 	const version = versionPromise.data.css;
 
-	const CHAMP_LIST_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/tr_TR/champion.json`;
+	const CHAMP_LIST_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/championFull.json`;
 
 	const champPromise = await axios.get(CHAMP_LIST_URL);
 	const champs = champPromise.data.data;
 
-	setCallback(Object.keys(champs).map(champ => ({ champ, icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ}.png` })));
+	setCallback(Object.keys(champs).map(champ => ({
+		...champs[champ],
+		champ,
+		icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ}.png`,
+		image: `https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champ}_0.jpg`,
+	})));
 };
 
 export const useTimeCounter = ({

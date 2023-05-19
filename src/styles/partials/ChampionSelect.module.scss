@@ -56,15 +56,14 @@
 		}
 	}
 
-	.summoner {
-		animation-name: fadeUp;
-		animation-duration: 1s;
-
+	.summoners {
 		transition: all 250ms ease-in-out;
 
-		&.hidden {
-			opacity: 0;
-			transform: translateY(50px);
+		@for $i from 1 through 30 {
+			.summoner:nth-child(#{$i}) {
+				opacity: 0;
+				animation: fadeUp 1s calc(#{$i}s * 0.25) forwards;
+			}
 		}
 
 		@keyframes fadeUp {
@@ -77,25 +76,25 @@
 				opacity: 1;
 			}
 		}
+
+		&.hidden {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(50px);
+		}
 	}
 
 	.champions {
 		transition: all 250ms ease-in-out;
 
-		&.hidden {
-			opacity: 0;
-		}
-	}
 
-	.champion {
-		animation-name: fadeLeft;
-		animation-duration: 1s;
-		transition: all 250ms ease-in-out;
-
-		&.hidden {
-			opacity: 0;
-			transform: translateX(20px);
+		@for $i from 1 through 30 {
+			.champion:nth-child(#{$i}) {
+				opacity: 0;
+				animation: fadeLeft 1s calc(#{$i}s * 0.25) forwards;
+			}
 		}
+
 
 		@keyframes fadeLeft {
 			from {
@@ -106,6 +105,45 @@
 				transform: translateX(0);
 				opacity: 1;
 			}
+		}
+
+		&.hidden {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+
+	.champion {
+		transition: all 250ms ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			transition: all 50ms ease-in-out;
+			border-color: $gold-two!important;
+			transform: scale(1.3)!important;
+
+			.name {
+				position: absolute;
+				visibility: visible;
+				left: 50%;
+				padding: 2px 3px 2px 3px;
+				border-radius: 3px;
+				font-size: 12px;
+				transform: translateX(-50%);
+				background-color: $hextec;
+				white-space: nowrap;
+				top: -25px;
+			}
+		}
+
+		.name {
+			position: absolute;
+			visibility: hidden;
+		}
+
+		&.hidden {
+			opacity: 0;
+			transform: translateX(20px);
 		}
 	}
 }

@@ -4,11 +4,28 @@ import classNames from 'classnames';
 import styles from '@/styles/partials/ChampionSelect.module.scss';
 import { useRouter } from 'next/router';
 import clipboardy from 'clipboardy';
+import { useState } from 'react';
 
 const Actions = ({
 	allSummoners, allChamps, resetSummoners, resetChamps, multiplier = 1,
 }) => {
 	const router = useRouter();
+
+	const [champsRolled, setChampsRolled] = useState(1); 
+	const [summonersRolled, setSummonersRolled] = useState(1);
+
+
+	const rollChamps = () => {
+		setChampsRolled(champsRolled + 1);
+		resetChamps();
+	};
+
+	const rollSummoners = () => {
+		setChampsRolled(1);
+		setSummonersRolled(summonersRolled + 1);
+		resetSummoners();
+	};
+
 
 	const handleBack = () => {
 		router.push('/');
@@ -49,20 +66,34 @@ const Actions = ({
 						Copy
 					</Button>
 					<Button
-						className={classNames('fs-18 p-1 px-3 d-flex gap-1')}
+						className={classNames('p-1 px-3 d-block mt-5')}
 						theme={ButtonThemes.HEXTEC}
-						onClick={resetChamps}
+						onClick={rollChamps}
 					>
-						<Icon iconType={IconType.REFRESH} iconSize={IconSize.SMALLER} />
-						Champs
+						<div>
+							<div className="fs-16 d-flex gap-1">
+								<Icon iconType={IconType.REFRESH} iconSize={IconSize.SMALLER} />
+								Champs
+							</div>
+							<div className="fs-10">
+								Rolled {champsRolled}
+							</div>
+						</div>
 					</Button>
 					<Button
-						className={classNames('fs-18 p-1 px-3 d-flex gap-1')}
+						className={classNames('p-1 px-3 d-block')}
 						theme={ButtonThemes.MAGIC}
-						onClick={resetSummoners}
+						onClick={rollSummoners}
 					>
-						<Icon iconType={IconType.REFRESH} iconSize={IconSize.SMALLER} />
-						Teams
+						<div>
+							<div className="fs-16 d-flex gap-1">
+								<Icon iconType={IconType.REFRESH} iconSize={IconSize.SMALLER} />
+								Teams
+							</div>
+							<div className="fs-10">
+								Rolled {summonersRolled}
+							</div>
+						</div>
 					</Button>
 				</div>
 			</div>

@@ -5,20 +5,17 @@ import Icon, { IconSize, IconType } from '@/shared/icon';
 import styles from '@/styles/partials/RandomizerInput.module.scss';
 import classNames from 'classnames';
 import Select, { SelectSizes } from '@/shared/select';
+import { TEAM_OPTIONS } from '@/helper';
 
 const RandomizerInput = ({ summoners = [], setSummoners }) => {
 	const [text, setText] = useState('');
 
 	const summonerAddDisabled = summoners?.length > 9;
 
-	const teamOptions = [
-		{ label: 'Team 1', value: 0 },
-		{ label: 'Team 2', value: 1 },
-		{ label: 'RNG', value: 2 }
-	]
+
 
 	const getTeamOptions = () => {
-		return teamOptions.map(team => ({
+		return TEAM_OPTIONS.map(team => ({
 			...team,
 			disabled:  team.value !== 2 && summoners?.filter(summoner => summoner.team === team.value)?.length === 5
 		}))
@@ -53,9 +50,16 @@ const RandomizerInput = ({ summoners = [], setSummoners }) => {
 				<Input placeholder="Type summoner name" onChange={onTextChange} onEnter={onEnter} value={text} maxLength={16} />
 				<Button style={{ width: 80 }} className="justify-content-center" onClick={onEnter} disabled={summonerAddDisabled}>Add</Button>
 			</div>
-			<div>
+			<div className="pt-1 bg-hextec d-block gap-2 mt-3">
+				{summoners.length === 0 &&
+				(
+					<div className="d-flex h-100-p mt-3 justify-content-center align-items-center text-grey-half">
+						Add summoners to randomize
+					</div>
+				)
+				}
 				{summoners.map((summoner, index) => (
-					<div className={`w-100-p align-items-center border-bottom border-grey-half my-2 ${styles.summoner}`}>
+					<div className={`w-100-p align-items-center border-bottom border-gold-six px-2 ${styles.summoner}`}>
 						<div
 							style={{ justifyContent: 'space-between', fontFamily: 'Spiegel' }}
 							className={
