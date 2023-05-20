@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 	return (
 		<div>
 			<Head>
-				<title>Jak'Sho Aram Randomizer</title>
+				<title>Randomizer - Jaksho</title>
 				<meta name="author" content="Ömer Cem Turan" />
 				<meta name="keywords" content="League of Legends, LoL, ARAM, Random, Player, Champion, Summoner, Randomizer, RNG, Matchup, VS" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
