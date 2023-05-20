@@ -1,0 +1,49 @@
+@import "../variables.scss";
+@import "../hex/breakpoints.scss";
+
+.championDetail {
+	.image {
+		position: relative;
+		background-position: center;
+		background-size: cover;
+		aspect-ratio: 16/9;
+
+		.titleBox {
+			position: absolute;
+			left: 20%;
+			top: 20%;
+			text-shadow: 0 0 20px #000, 0 0 20px #000, 0 0 20px #000, 0 0 20px #000;
+			line-height: 48px;
+
+			@include respond-below(md) {
+				line-height: 32px;
+				top: 60%;
+			}
+
+
+			.title {
+				@include respond-below(md) {
+					font-size: 32px;
+				}
+			}
+
+			.subtitle {
+				@include respond-below(md) {
+					font-size: 24px;
+				}
+			}
+
+			@include respond-below(sm) {
+				aspect-ratio: 4/3;
+			}
+		}
+
+		@include respond-below(sm) {
+			aspect-ratio: 4/3;
+		}
+
+		@include respond-below(xs) {
+			aspect-ratio: 1;
+		}
+	}
+}

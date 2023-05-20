@@ -15,6 +15,9 @@ const Layout = ({ children, currentRoute }) => {
 				<meta name="description" content="Get ready for unpredictable battles with Jak'Sho, ARAM Randomizer 
           for League of Legends. Embrance the power of RNG and matchup with your friends for a thrilling game." />
 				<link rel="icon" href="/favicon.ico" />
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
 			</Head>
 			<div className={classNames(styles.layout)}>
 				<div className="container py-5">

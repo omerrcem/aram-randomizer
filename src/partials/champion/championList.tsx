@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import styles from '../../styles/partials/ChampionList.module.scss';
 import { useState } from 'react';
 import Button from '@/shared/button';
+import Link from 'next/link';
+import { routeAs, routes } from '@/shared/header';
 
 const ChampionList = ({ champions }) => {
 
@@ -14,15 +16,17 @@ const ChampionList = ({ champions }) => {
 					return (
 						
 						<div className={classNames(styles.champion)}>
-							<div style={{ backgroundImage: 'url("./champion.svg")'}} className={styles.image}>
-								
-								<img src={champ.image} alt={champ.name} onError={(event: any) => event.target.style.display = 'none'} />
-							</div>
+							<Link style={{ textDecoration: 'none' }} href={routes.CHAMPION_DETAIL.path} as={routeAs(routes.CHAMPION_DETAIL.path, { champ: champ.champ })}>
+								<div style={{ backgroundImage: 'url("./champion.svg")'}} className={styles.image}>
+									
+									<img src={champ.image} loading="lazy" alt={champ.name} onError={(event: any) => event.target.style.display = 'none'} />
+								</div>
 
-							<div className="p-2">
-								<div className="BeaufortBold fs-12">{champ.name}</div>
-								<div className="BeaufortBold fs-10 text-grey-one">{champ.title}</div>
-							</div>
+								<div className="p-2">
+									<div className="BeaufortBold fs-12 text-primary">{champ.name}</div>
+									<div className="BeaufortBold fs-10 text-grey-one">{champ.title}</div>
+								</div>
+							</Link>
 						</div>
 					);
 				})}

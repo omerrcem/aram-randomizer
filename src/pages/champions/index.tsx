@@ -4,7 +4,6 @@ import ChampionList from "@/partials/champion/championList";
 import { routes } from "@/shared/header";
 
 const Champions = ({ champs }) => {
-
 	return (
 		<Layout currentRoute={routes.CHAMPIONS}>
 			<ChampionList champions={champs} />

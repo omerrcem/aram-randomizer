@@ -39,7 +39,7 @@ export enum IconVariant {
 const Icon = props => {
 	const {
 		iconType = IconType.CANCEL,
-		variant = IconVariant.GOLD_ONE,
+		variant = null,
 		iconSize = IconSize.MEDIUM,
 		clickable = false,
 		className,

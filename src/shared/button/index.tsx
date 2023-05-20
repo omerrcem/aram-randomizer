@@ -4,7 +4,8 @@ import styles from '@/styles/shared/Button.module.scss';
 export enum ButtonThemes {
 	PRIMARY = 'primary',
 	MAGIC = 'magic',
-	HEXTEC = 'hextec'
+	HEXTEC = 'hextec',
+	FLAT = 'flat'
 }
 
 const Button = props => {

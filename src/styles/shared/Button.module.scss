@@ -40,4 +40,17 @@
 			background: linear-gradient(rgba($gold-five, 1), rgba($gold-four, 1));
 		}
 	}
+
+	&.flat {
+		transition: all .1s ease-in-out;
+		color: $gold-two;
+		background-color: transparent;
+		border: none;
+		border-bottom: 1px solid $gold-six;
+
+		&:hover {
+			color: $gold-one;
+			border-color: $gold-one;
+		}
+	}
 }

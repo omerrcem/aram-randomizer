@@ -92,9 +92,36 @@ export const getChamps = async (setCallback, full = false) => {
 		...champs[champ],
 		champ,
 		icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ}.png`,
-		image: `https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${champ}_0.jpg`,
+		image: `https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${getChampImageName(champ)}_0.jpg`,
+		loadImage: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${getChampImageName(champ)}_0.jpg`,
+		fullImage: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${getChampImageName(champ)}_0.jpg`
 	})));
 };
+
+export const getChamp = async (name, setCallback) => {
+	const VERSION_URL = 'https://ddragon.leagueoflegends.com/realms/tr.json';
+
+	const versionPromise = await axios.get(VERSION_URL);
+	const version = versionPromise.data.css;
+
+	const CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${name}.json`;
+	console.log(CHAMP_URL);
+	const champPromise = await axios.get(CHAMP_URL);
+	const champ = champPromise.data.data[name];
+
+	setCallback({
+		...champ,
+		icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ.id}.png`,
+		image: `https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${getChampImageName(champ.id)}_0.jpg`,
+		loadImage: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${getChampImageName(champ.id)}_0.jpg`,
+		fullImage: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${getChampImageName(champ.id)}_0.jpg`
+	});
+};
+
+const getChampImageName = champ => {
+	if (champ === 'Fiddlesticks') return 'FiddleSticks';
+	return champ;
+}
 
 export const useTimeCounter = ({
 	maxCount, cancel, dependencies, delay = 350,
