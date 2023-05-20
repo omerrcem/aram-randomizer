@@ -53,7 +53,10 @@ const RandomizerInput = ({ summoners = [], setSummoners }) => {
 			<div className="pt-1 bg-hextec d-block gap-2 mt-3">
 				{summoners.length === 0 &&
 				(
-					<div className="d-flex h-100-p mt-3 justify-content-center align-items-center text-grey-half">
+					<div className={classNames(
+						"d-flex h-100-p mt-3 justify-content-center align-items-center text-grey-half",
+						styles.noSummoner
+						)}>
 						Add summoners to randomize
 					</div>
 				)

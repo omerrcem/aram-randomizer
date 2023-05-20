@@ -7,6 +7,7 @@ export enum IconType {
 	DICE = 'dice',
 	CHAMP = 'champ',
 	REFRESH = 'refresh',
+	JAKSHO = 'jaksho',
 	BACK = 'back',
 	COPY = 'copy',
 	PLUS = 'plus',
@@ -19,10 +20,12 @@ export enum IconSize {
 	SMALL = 18,
 	MEDIUM = 24,
 	LARGE = 32,
+	HUGE = 40
 }
 
 export enum IconVariant {
 	GOLD_ONE = '#F0E6D2',
+	GOLD_TWO = '#C8AA6E',
 	GOLD_FOUR = '#C89B3C',
 	GOLD_SIX = '#463714',
 	HEXTEC = '#010A13',

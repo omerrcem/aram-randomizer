@@ -6,7 +6,8 @@ import back from '../../../public/icons/return.svg';
 import copy from '../../../public/icons/copy.svg';
 import minus from '../../../public/icons/minus.svg';
 import plus from '../../../public/icons/increment.svg';
+import jaksho from '../../../public/icons/jaksho2.svg';
 
 export default {
-	cancel, champ, dice, refresh, back, copy, minus, plus,
+	cancel, champ, dice, refresh, back, copy, minus, plus, jaksho
 };
