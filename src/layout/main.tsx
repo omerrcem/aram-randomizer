@@ -4,7 +4,7 @@ import styles from '@/styles/shared/Layout.module.scss';
 import Icon, { IconSize, IconType, IconVariant } from '@/shared/icon';
 import Header from '@/shared/header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, currentRoute }) => {
 	return (
 		<div>
 			<Head>
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
 			<div className={classNames(styles.layout)}>
 				<div className="container py-5">
 					<div className="border border-secondary Spiegel p-3 text-primary bg-hextec">
-						<Header />
+						<Header currentRoute={currentRoute} />
 						{children}
 					</div>
 				</div>

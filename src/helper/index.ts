@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 export const VERSION = "1.1.0"
 
+export const MAGIC_BACKGROUND = 'https://assets.contentstack.io/v3/assets/blt2ac872571a60ee02/blt7a72b1686eb3219a/618d75137ae6ce6fab413b1f/background-video-d-02.mp4';
+
 export enum TeamOptions {
 	TEAM_1 = 0,
 	TEAM_2,
@@ -75,13 +77,13 @@ export const shuffleAndSplitList = list => {
 	return [firstList, secondList];
 };
 
-export const getChamps = async setCallback => {
+export const getChamps = async (setCallback, full = false) => {
 	const VERSION_URL = 'https://ddragon.leagueoflegends.com/realms/tr.json';
 
 	const versionPromise = await axios.get(VERSION_URL);
 	const version = versionPromise.data.css;
 
-	const CHAMP_LIST_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/championFull.json`;
+	const CHAMP_LIST_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion${full ? 'Full' : ''}.json`;
 
 	const champPromise = await axios.get(CHAMP_LIST_URL);
 	const champs = champPromise.data.data;

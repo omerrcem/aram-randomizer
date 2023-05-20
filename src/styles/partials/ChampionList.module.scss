@@ -1,0 +1,47 @@
+@import "../variables.scss";
+
+.championList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 25px;
+
+	.champion {
+		width: 150px;
+		transition: all 100ms ease-in-out;
+		border: 1px solid $gold-six;
+		cursor: pointer;
+
+		&:hover {
+			border-color: $gold-two;
+
+			.image {
+				opacity: 1;
+			}
+		}
+
+		.image {
+			opacity: 0.7;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-color: $blue-seven;
+			background-size: 30px;
+			background-position: center;
+			aspect-ratio: 1;
+
+			img {
+				width: 100%;
+				animation: fadein 100ms forwards;
+
+				@keyframes fadein {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+			}
+		}
+	}
+}

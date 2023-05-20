@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Icon, { IconSize, IconType, IconVariant } from "../icon";
+import classNames from "classnames";
+import styles from '../../styles/shared/Header.module.scss';
 
 
-const routes = {
+export const routes = {
 	RANDOMIZER: { path: '/', name: 'Randomizer'},
-	// CHAMPIONS: '/champions'
+	CHAMPIONS: { path: '/champions', name: 'Champions' }
 } 
 
-const Header = () => {
+const Header = ({ currentRoute }) => {
 	return (
-		<div className="p-3">
+		<div className={classNames("p-3", styles.header)}>
 			<h1 className="BeaufortBold text-primary fs-28 d-flex gap-3 px-4">
 				<Icon iconType={IconType.JAKSHO} iconSize={IconSize.LARGE} variant={IconVariant.GOLD_TWO} />
 				Jaksho
@@ -21,7 +23,7 @@ const Header = () => {
 			<div className="d-flex gap-3 border-bottom border-gold-six px-sm-5 px-1 mt-3">
 				{Object.keys(routes).map((key, index) => {
 					console.log(key, routes[key])
-					return <NavigationButton key={index} route={routes[key]} />
+					return <NavigationButton key={index} route={routes[key]} currentRoute={currentRoute} />
 				})}
 			</div>
 
@@ -29,10 +31,15 @@ const Header = () => {
 	);
 };
 
-const NavigationButton = ({ route }) => {
+const NavigationButton = ({ route, currentRoute }) => {
+
 	return (
 		<Link style={{ textDecoration: 'none' }} href={route.path}>
-			<div className="text-primary border-bottom fs-14 border-primary">
+			<div className={classNames(
+				"fs-12 border-primary",
+				styles.navigationButton,
+				route === currentRoute && styles.active,
+			)}>
 				{route.name}
 			</div>
 		</Link>

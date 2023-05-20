@@ -1,10 +1,11 @@
 import { getChamps } from '@/helper';
 import Layout from '@/layout/main';
 import ChampSelect from '@/partials/champSelect';
+import { routes } from '@/shared/header';
 
 const Roll = ({ summoners, options, champs }) => {
 	return (
-		<Layout>
+		<Layout currentRoute={routes.RANDOMIZER}>
 			<ChampSelect summoners={summoners} options={options} champs={champs} />
 		</Layout>
 	);
