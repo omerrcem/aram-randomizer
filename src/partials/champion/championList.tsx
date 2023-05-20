@@ -14,20 +14,12 @@ const ChampionList = ({ champions }) => {
 			<div className={classNames(styles.championList)}>
 				{champions.slice(0, index).map(champ =>{
 					return (
-						
-						<div className={classNames(styles.champion)}>
-							<Link style={{ textDecoration: 'none' }} href={routes.CHAMPION_DETAIL.path} as={routeAs(routes.CHAMPION_DETAIL.path, { champ: champ.champ })}>
-								<div style={{ backgroundImage: 'url("./champion.svg")'}} className={styles.image}>
-									
-									<img src={champ.image} loading="lazy" alt={champ.name} onError={(event: any) => event.target.style.display = 'none'} />
-								</div>
-
-								<div className="p-2">
-									<div className="BeaufortBold fs-12 text-primary">{champ.name}</div>
-									<div className="BeaufortBold fs-10 text-grey-one">{champ.title}</div>
-								</div>
-							</Link>
-						</div>
+						<Champ champ={champ} />
+					);
+				})}
+				{champions.slice(index, champions.length).map(champ =>{
+					return (
+						<Champ champ={champ} hidden />
 					);
 				})}
 			</div>
@@ -40,6 +32,24 @@ const ChampionList = ({ champions }) => {
 			)}
 		</div>
 	)
+};
+
+export const Champ = ({ champ, hidden = false }) =>{
+	return (
+		<div className={classNames(styles.champion, { 'd-none' : hidden } )}>
+			<Link style={{ textDecoration: 'none' }} href={routes.CHAMPION_DETAIL.path} as={routeAs(routes.CHAMPION_DETAIL.path, { champ: champ.champ })}>
+				<div style={{ backgroundImage: 'url("./champion.svg")'}} className={styles.image}>
+					
+					<img src={champ.image} loading="lazy" alt={champ.name} onError={(event: any) => event.target.style.display = 'none'} />
+				</div>
+
+				<div className="p-2">
+					<div className="BeaufortBold fs-12 text-primary">{champ.name}</div>
+					<div className="BeaufortBold fs-10 text-grey-one">{champ.title}</div>
+				</div>
+			</Link>
+		</div>
+	);
 };
 
 export default ChampionList;
