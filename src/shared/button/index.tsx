@@ -9,11 +9,13 @@ export enum ButtonThemes {
 }
 
 const Button = props => {
-	const { children, className, theme = ButtonThemes.PRIMARY } = props;
+	const { style, children, disabled, className, theme = ButtonThemes.PRIMARY, onClick } = props;
 
 	return (
 		<button
-			{...props}
+			style={style}
+			onClick={onClick}
+			disabled={disabled}
 			className={classNames(
 				styles.button,
 				styles[theme],

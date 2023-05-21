@@ -34,7 +34,6 @@ const RandomizerInput = ({ summoners = [], setSummoners }) => {
 	};
 
 	const changeTeam = (team, summoner) => {
-		console.log(team);
 		summoner.team = team.value;
 		setSummoners([...summoners]);
 	}

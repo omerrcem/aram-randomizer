@@ -1,0 +1,18 @@
+@import "../variables.scss";
+
+.options {
+	.roles {
+		.role {
+			height: 45px;
+			cursor: pointer;
+
+			.icon {
+				height: 40px;
+			}
+
+			&:hover {
+				background-color: $grey-cool;
+			}
+		}
+	}
+}

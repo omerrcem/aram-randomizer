@@ -1,6 +1,7 @@
 import styles from '@/styles/shared/Icon.module.scss';
 import classNames from 'classnames';
 import imports from './imports';
+import { noop } from 'lodash';
 
 export enum IconType {
 	CANCEL = 'cancel',
@@ -43,13 +44,14 @@ const Icon = props => {
 		iconSize = IconSize.MEDIUM,
 		clickable = false,
 		className,
+		onClick = noop
 	} = props;
 
 	const SVG = imports[iconType];
 
 	return (
 		<span
-			{...props}
+			onClick={onClick}
 			style={{ color: variant }}
 			className={classNames('d-flex align-items-center',
 			styles.icon, clickable && styles.clickable, className)}

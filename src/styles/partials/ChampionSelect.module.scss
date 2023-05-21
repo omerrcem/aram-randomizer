@@ -62,13 +62,13 @@
 		@for $i from 1 through 30 {
 			.summoner:nth-child(#{$i}) {
 				opacity: 0;
-				animation: fadeUp 1s calc(#{$i}s * 0.25) forwards;
+				animation: fadeUp 0.7s calc(#{$i}s * 0.15) forwards;
 			}
 		}
 
 		@keyframes fadeUp {
 			from {
-				transform: translateY(50px);
+				transform: translateY(20px);
 				opacity: 0;
 			}
 			to {
@@ -91,7 +91,7 @@
 		@for $i from 1 through 30 {
 			.champion:nth-child(#{$i}) {
 				opacity: 0;
-				animation: fadeLeft 1s calc(#{$i}s * 0.25) forwards;
+				animation: fadeLeft 0.7s calc(#{$i}s * 0.1) forwards;
 			}
 		}
 

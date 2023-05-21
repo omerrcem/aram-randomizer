@@ -1,5 +1,11 @@
+@import "../hex/breakpoints.scss";
+
 .randomizerInput {
 	min-height: 500px;
+
+	@include respond-below(sm) {
+		min-height: 200px;
+	}
 
 	.noSummoner {
 		animation: bounce 3s ease infinite;

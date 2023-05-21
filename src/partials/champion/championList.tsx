@@ -20,14 +20,14 @@ const ChampionList = ({ champions }) => {
 	return (
 		<div>
 			<div className={classNames(styles.championList)}>
-				{champions.slice(0, index).map(champ =>{
+				{champions.slice(0, index).map((champ, index) =>{
 					return (
-						<Champ champ={champ} />
+						<Champ key={champ.name + index} champ={champ} />
 					);
 				})}
-				{champions.slice(index, champions.length).map(champ =>{
+				{champions.slice(index, champions.length).map((champ, index) =>{
 					return (
-						<Champ champ={champ} hidden />
+						<Champ key={champ.name + index} champ={champ} hidden />
 					);
 				})}
 			</div>

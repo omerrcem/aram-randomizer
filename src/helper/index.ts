@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { PRNG } from './prng';
 
 export const VERSION = "1.1.0"
 
@@ -30,12 +31,18 @@ export const EMPTY_SUMMONER = {
 	team: TeamOptions.EMPTY
 }
 
-export const shuffleTeam = summoners => {
+
+export const generateSeed = () => {
+	return Math.floor(Math.random() * 10000)
+};
+
+export const shuffleTeam = (summoners, seed) => {
+	const prng = new PRNG(seed); 
 	const firstTeam = [...summoners.filter(summoner => summoner.team === 0 )];
 	const secondTeam = [...summoners.filter(summoner => summoner.team === 1 )];
 	const randoms = [...summoners.filter(summoner => summoner.team === 2 )];
 
-	randoms.sort(() => Math.random() - 0.5)
+	randoms.sort(() => prng.next() - 0.5)
 
 	randoms.forEach(summoner => {
 		switch (true) {
@@ -46,7 +53,7 @@ export const shuffleTeam = summoners => {
 				secondTeam.push(summoner);
 				break;
 			default:
-				[firstTeam, secondTeam][Math.round(Math.random())].push(summoner)
+				[firstTeam, secondTeam][Math.round(prng.next())].push(summoner)
 				break;
 		}
 	});
@@ -64,16 +71,21 @@ export const shuffleTeam = summoners => {
 			secondTeam.push({ ...EMPTY_SUMMONER, name: index.toString()});	
 		})
 	}
-
 	return [firstTeam, secondTeam];
 }
 
-export const shuffleAndSplitList = list => {
-	const shuffledList = list.sort(() => Math.random() - 0.5);
+export const shuffleChamps = (list, seed, roleFilter) => {
+	const prng = new PRNG(seed);
+	const listCopy = [...list];
+	const filteredChampions = listCopy.filter(champ => {
+		return roleFilter.filter(role => {
+			return role.enabled && champ.tags.includes(role.name);
+		}).length > 0;
+	})
+	const shuffledList = filteredChampions.sort(() => prng.next() - 0.5);
 	const halfLength = Math.floor(shuffledList.length / 2);
 	const firstList = shuffledList.slice(0, halfLength);
 	const secondList = shuffledList.slice(halfLength, shuffledList.length);
-
 	return [firstList, secondList];
 };
 
@@ -105,7 +117,6 @@ export const getChamp = async (name, setCallback) => {
 	const version = versionPromise.data.css;
 
 	const CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${name}.json`;
-	console.log(CHAMP_URL);
 	const champPromise = await axios.get(CHAMP_URL);
 	const champ = champPromise.data.data[name];
 

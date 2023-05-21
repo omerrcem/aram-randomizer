@@ -10,7 +10,6 @@ import { useState } from "react";
 
 const ChampionDetail = ({ champ }) => {
 	const router = useRouter();
-	console.log(champ);
 	return (
 		<Layout currentRoute={routes.CHAMPIONS}>
 			<div className="px-3 pb-3">

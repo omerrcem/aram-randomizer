@@ -132,7 +132,6 @@ const Champ = ({ hide, champ }) => {
 };
 
 const ChampPreview = ({ champ, onClose }) => {
-	console.log(champ);
 	const imageRef = useRef<HTMLImageElement>(null);
 
 	useEffect(() => {

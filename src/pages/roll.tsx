@@ -1,4 +1,4 @@
-import { getChamps } from '@/helper';
+import { getChamps, shuffleChamps, shuffleTeam } from '@/helper';
 import Layout from '@/layout/main';
 import ChampSelect from '@/partials/champSelect';
 import { routes } from '@/shared/header';
