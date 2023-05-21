@@ -32,7 +32,7 @@ const ChampionDetail = ({ champ }) => {
 						<div className={classNames(styles.title, 'BeaufortBold fs-48')}>
 							{champ.name}
 						</div>
-						<div className={classNames(styles.subtitle, 'BeaufortBold fs-24 text-secondary')}>
+						<div className={classNames(styles.subtitle, 'BeaufortBold fs-24 text-gold-two')}>
 							{champ.title}
 						</div>
 					</div>
@@ -43,8 +43,23 @@ const ChampionDetail = ({ champ }) => {
 						<span className="BeaufortBold text-primary border-bottom border-secondary pe-3 pb-1">
 							Lore
 						</span>
-						<div className="Spiegel fs-12 text-grey-one mt-3">
+						<div className="Spiegel fs-12 mb-3 text-grey-one mt-3">
 							{champ.lore}
+						</div>
+						<span className="BeaufortBold text-primary border-bottom border-secondary pe-3 pb-1">
+							Roles
+						</span>
+						<div className="p-2 d-flex gap-3" style={{ width: 'fit-content'}}>
+							{champ.tags.map(role => {
+								return (
+									<div className="text-center">
+										<img src={`../roles/${role}.webp`} style={{ height: 50 }} />
+										<div className="fs-12">
+											{role}
+										</div>
+									</div>
+								)
+							})}
 						</div>
 					</div>
 
@@ -100,7 +115,9 @@ const Skills = ({ champ }) => {
 					</span>
 					{activeSkill.name}
 				</div>
-				<div dangerouslySetInnerHTML={{ __html: activeSkill.description }}></div>
+				{[champ.passive, ...champ.spells].map((skill, index) => {
+					return <div className={activeSkillIndex === index ? '' : 'd-none'} dangerouslySetInnerHTML={{ __html: skill.description }}></div>
+				})}
 			</div>
 		</div>
 	)
