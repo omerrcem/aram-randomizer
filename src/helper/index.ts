@@ -111,6 +111,7 @@ export const getChamp = async (name, setCallback) => {
 
 	setCallback({
 		...champ,
+		version,
 		icon: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champ.id}.png`,
 		image: `https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/${getChampImageName(champ.id)}_0.jpg`,
 		loadImage: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${getChampImageName(champ.id)}_0.jpg`,

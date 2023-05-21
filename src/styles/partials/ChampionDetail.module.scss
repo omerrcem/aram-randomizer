@@ -46,4 +46,39 @@
 			aspect-ratio: 1;
 		}
 	}
+
+	.skills {
+		.skill {
+			border: 1px solid $gold-six;
+			cursor: pointer;
+
+			&:hover {
+				border-color: $gold-two;
+			}
+		}
+
+		[data-selected='true'] {
+			border-color: $gold-one;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				bottom: -20px;
+				left: 50%;
+				transform: translateX(-50%);
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+			
+				border-bottom: 10px solid $gold-two;
+			}
+		}
+
+		.description {
+			border-top: 1px solid $gold-two;
+			margin-top: 18px;
+		}
+	}
 }
