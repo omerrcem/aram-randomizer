@@ -24,6 +24,7 @@ const Roll = ({ summoners, setSummoners, options, setOptions }) => {
 		const parsed = JSON.parse(Buffer.from(encoded, 'base64').toString());
 		if (VERSION === parsed?.version) {
 			setSummoners(parsed?.summoners || []);
+			console.log('parsed', parsed?.options)
 			setOptions(parsed?.options || {})
 		} else {
 			localStorage.getItem('data')

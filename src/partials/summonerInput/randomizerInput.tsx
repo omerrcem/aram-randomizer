@@ -12,8 +12,6 @@ const RandomizerInput = ({ summoners = [], setSummoners }) => {
 
 	const summonerAddDisabled = summoners?.length > 9;
 
-
-
 	const getTeamOptions = () => {
 		return TEAM_OPTIONS.map(team => ({
 			...team,
@@ -46,7 +44,13 @@ const RandomizerInput = ({ summoners = [], setSummoners }) => {
 	return (
 		<div className={classNames(styles.randomizerInput, 'w-100-p px-3 mt-4 mt-md-0')}>
 			<div className="d-flex gap-2 mt-2">
-				<Input placeholder="Type summoner name" onChange={onTextChange} onEnter={onEnter} value={text} maxLength={16} />
+				<Input
+					placeholder="Type summoner name"
+					onChange={onTextChange}
+					onEnter={onEnter}
+					value={text}
+					maxLength={16}
+					/>
 				<Button style={{ width: 80 }} className="justify-content-center" onClick={onEnter} disabled={summonerAddDisabled}>Add</Button>
 			</div>
 			<div className="pt-1 bg-hextec d-block gap-2 mt-3">

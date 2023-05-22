@@ -14,6 +14,7 @@ const Team = ({
 	multiplier = 1,
 	champsHidden,
 	teamsHidden,
+	options
 }) => {
 	const right = index === 2;
 	const champCount = (team?.length || 0) * multiplier;
@@ -32,9 +33,19 @@ const Team = ({
 					className={classNames(
 						'fs-16 w-100-p border-bottom border-gold-six d-flex',
 						{ 'justify-content-end text-right': right },
-					)}
-				>
+					)}>
 					{`Team ${index}`}
+				</div>
+			</div>
+			<div>
+				<div className={classNames('d-flex p-2 gap-1', { 'flex-row-reverse': right })}>
+					{options.filter.map(role => {
+						return (
+							<div className={classNames({ 'opacity-25' : !role.enabled})}>
+								<img style={{ height: 20 }} src={`../roles/${role.name}.webp`} alt={role.name} />
+							</div>
+						)
+					})}
 				</div>
 			</div>
 			<Champs

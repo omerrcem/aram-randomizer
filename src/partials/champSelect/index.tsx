@@ -63,6 +63,7 @@ const ChampSelect = ({ summoners, options, champs }) => {
 				multiplier={champCount}
 				champsHidden={champsHidden}
 				teamsHidden={teamsHidden}
+				options={options}
 			/>
 			<Actions
 				allChamps={champsSplitted}
@@ -79,6 +80,7 @@ const ChampSelect = ({ summoners, options, champs }) => {
 				multiplier={champCount}
 				champsHidden={champsHidden}
 				teamsHidden={teamsHidden}
+				options={options}
 			/>
 		</div>
 	);

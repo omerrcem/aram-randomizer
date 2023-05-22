@@ -8,16 +8,15 @@ const Stepper = ({ value = 1, className = '',
 	const [step, setStep] = useState(value || 1);
 
 	const onClick = diff => {
-		if (step + diff >= minValue && step + diff <= maxValue) setStep(step + diff);
+		if (step + diff >= minValue && step + diff <= maxValue) {
+			setStep(step + diff);
+			onChange && onChange(step + diff);
+		}
 	};
 
 	useEffect(() => {
 		setStep(value);
 	}, [value]);
-
-	useEffect(() => {
-		onChange && onChange(step);
-	}, [step]);
 
 	return (
 		<div className={classNames('d-flex', className)} style={{ height: 40 }}>

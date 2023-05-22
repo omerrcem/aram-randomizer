@@ -18,6 +18,7 @@ const Input = props => {
 	return (
 		<input
 			placeholder={placeholder}
+			value={value}
 			className={classNames('px-3 w-100-p fs-14 bg-blue-seven text-primary border border-grey-half', styles.input)}
 			type="text"
 			onChange={onTextEnter}

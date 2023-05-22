@@ -3,8 +3,13 @@
 .options {
 	.roles {
 		.role {
+			transition: all 150ms ease-in-out;
 			height: 45px;
 			cursor: pointer;
+
+			div {
+				transition: all 100ms ease-in-out;
+			}
 
 			.icon {
 				height: 40px;

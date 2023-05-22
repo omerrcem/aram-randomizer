@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import RandomizerInput from './randomizerInput';
 import Roll from './roll';
-import Options from './options';
-import { MAGIC_BACKGROUND } from '@/helper';
+import Options, { ROLES } from './options';
 
 const Randomizer = () => {
 	const [summoners, setSummoners] = useState([]);
-	const [options, setOptions] = useState({ champCount: 2 })
+	const [options, setOptions] = useState({ 
+		champCount: 2,
+		filter: ROLES.map(role => ({ name: role, enabled: true}))
+	 })
+
 	return (
 		<>
 			<div className="p-3 d-flex BeaufortBold fs-24 justify-content-center">
