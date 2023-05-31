@@ -1,15 +1,33 @@
 import classNames from 'classnames';
 import styles from '../../styles/partials/ChampionList.module.scss';
 import { useState } from 'react';
-import Button from '@/shared/button';
+import Button, { ButtonThemes } from '@/shared/button';
 import Link from 'next/link';
 import { routeAs, routes } from '@/shared/header';
 import { useRouter } from 'next/router';
+import Input from '@/shared/input';
+import Icon, { IconType, IconVariant } from '@/shared/icon';
+import { ROLES } from '../summonerInput/options';
 
 const ChampionList = ({ champions }) => {
 	const router = useRouter();
 	const { query } = router;
 	const [index, setIndex] = useState((query.index as any) || 20);
+	const [searchTerm, setSearchTerm] = useState('');
+	const [roles, setRoles] = useState(ROLES);
+
+	const reset = () => {
+		setSearchTerm('');
+		setRoles(ROLES);
+	}
+
+	const handleRoleClick = role => {
+		if (roles.includes(role)) {
+			setRoles(roles.filter(r => r !== role));
+		} else {
+			setRoles([...roles, role]);
+		}
+	};
 
 	const onLoadMore = () => {
 		const newIndex = parseInt(index) + 30;
@@ -17,21 +35,54 @@ const ChampionList = ({ champions }) => {
 		router.replace({ query: { ...query, index: newIndex },  }, undefined, { shallow: true });
 	};
 
+	const filteredChamps = champions.filter(champ => {
+		return (JSON.stringify(Object.values(champ)).toLowerCase().includes(searchTerm.toLowerCase())) &&
+			champ.tags.filter(tag => roles.includes(tag)).length > 0
+	});
+
 	return (
 		<div>
+			<div className={classNames(styles.filter, 'BeaufortMedium fs-24')}>
+				Total {filteredChamps.length} champions
+			</div>
+			<div className={classNames(styles.filter, 'py-3 gap-3 border-bottom border-gold-six mb-4')}>
+				<div className="d-flex gap-2">
+					<Icon iconType={IconType.SEARCH} variant={IconVariant.GOLD_TWO} />
+					<Input
+						className={styles.search}
+						placeholder="Search champions"
+						value={searchTerm}
+						onChange={setSearchTerm}
+					/>
+				</div>
+				<div className="d-flex px-1 gap-1">
+					{ROLES.map(role => (
+						<img
+							className={styles.role}
+							src={`./roles/${role}.webp`} 
+							alt={role}
+							data-active={roles.includes(role)}
+							onClick={() => handleRoleClick(role)}
+							/>
+					))}
+					<Button className="ms-3 my-1" onClick={reset}>
+						Reset
+					</Button>
+				</div>
+			</div>
 			<div className={classNames(styles.championList)}>
-				{champions.slice(0, index).map((champ, index) =>{
+				{filteredChamps.slice(0, index).map((champ, index) =>{
 					return (
 						<Champ key={champ.name + index} champ={champ} />
 					);
 				})}
-				{champions.slice(index, champions.length).map((champ, index) =>{
+				{filteredChamps.slice(index, champions.length).map((champ, index) =>{
 					return (
 						<Champ key={champ.name + index} champ={champ} hidden />
 					);
 				})}
 			</div>
-			{champions.length > index && (
+			{filteredChamps.length > index && (
 				<div className="d-flex justify-content-center mt-4 mb-2">
 					<Button className="p-1 px-2" onClick={onLoadMore}>
 						Load More

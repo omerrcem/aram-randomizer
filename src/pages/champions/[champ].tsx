@@ -11,7 +11,11 @@ import { useState } from "react";
 const ChampionDetail = ({ champ }) => {
 	const router = useRouter();
 	return (
-		<Layout currentRoute={routes.CHAMPIONS}>
+		<Layout
+			title={`${champ.name}, ${champ.title} - Jaksho`}
+			description={`${champ.name}, ${champ.title} champion details on Jaksho. Get lore, skills and roles of ${champ.name}. Use this champion on randomizer!`}
+			currentRoute={routes.CHAMPIONS}
+		>
 			<div className="px-3 pb-3">
 				<Button onClick={() => router.back()} theme={ButtonThemes.FLAT} className="fs-14 p-1 px-2">
 					<Icon className="me-1" iconType={IconType.BACK} iconSize={IconSize.TINY} />

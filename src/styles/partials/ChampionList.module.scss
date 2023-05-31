@@ -1,10 +1,63 @@
+@import "../hex/breakpoints.scss";
 @import "../variables.scss";
 
-.championList {
+.filter {
 	display: flex;
-	flex-wrap: wrap;
+	margin: auto;
+	max-width: 850px;
+
+	@include respond-below(lg) {
+		max-width: 675px;
+	}
+	
+	@include respond-below(md) {
+		max-width: 500px;
+	}
+
+	@include respond-below(sm) {
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.search {
+		max-width: 200px;
+	}
+
+	.role {
+		height: 35px;
+		width: 35px;
+		opacity: 0.6;
+		cursor: pointer;
+		transition: all 150ms ease-in-out;
+
+		&[data-active='true'] {
+			opacity: 1;			
+		}
+
+		&:hover {
+			filter: drop-shadow(0 0 5px rgba($gold-four, 0.7));
+		}
+	}
+}
+
+.championList {
+	display: grid;
 	justify-content: center;
 	gap: 25px;
+	grid-template-columns: repeat(5, 150px);
+
+	@include respond-below(lg) {
+		grid-template-columns: repeat(4, 150px);
+	}
+	
+	@include respond-below(md) {
+		grid-template-columns: repeat(3, 150px);
+	}
+
+	@include respond-below(sm) {
+		grid-template-columns: repeat(2, 150px);
+	}
 
 	.champion {
 		width: 150px;

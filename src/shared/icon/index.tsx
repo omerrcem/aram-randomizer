@@ -12,7 +12,8 @@ export enum IconType {
 	BACK = 'back',
 	COPY = 'copy',
 	PLUS = 'plus',
-	MINUS = 'minus'
+	MINUS = 'minus',
+	SEARCH = 'search'
 }
 
 export enum IconSize {

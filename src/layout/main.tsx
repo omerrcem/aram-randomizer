@@ -1,19 +1,22 @@
 import Head from 'next/head';
 import classNames from 'classnames';
 import styles from '@/styles/shared/Layout.module.scss';
-import Icon, { IconSize, IconType, IconVariant } from '@/shared/icon';
 import Header from '@/shared/header';
 
-const Layout = ({ children, currentRoute }) => {
+const Layout = ({
+	children,
+	title = 'Jaksho',
+	description = 'League of Legends Randomizer & Champion Index',
+	currentRoute
+}) => {
 	return (
 		<div>
 			<Head>
-				<title>Randomizer - Jaksho</title>
+				<title>{title}</title>
 				<meta name="author" content="Ömer Cem Turan" />
 				<meta name="keywords" content="League of Legends, LoL, ARAM, Random, Player, Champion, Summoner, Randomizer, RNG, Matchup, VS" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta name="description" content="Get ready for unpredictable battles with Jak'Sho, ARAM Randomizer 
-          for League of Legends. Embrance the power of RNG and matchup with your friends for a thrilling game." />
+				<meta name="description" content={description} />
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

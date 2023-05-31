@@ -1,4 +1,5 @@
 @import "../hex/breakpoints.scss";
+@import "../variables.scss";
 
 .randomizerInput {
 	min-height: 500px;
@@ -8,12 +9,17 @@
 	}
 
 	.noSummoner {
-		animation: bounce 3s ease infinite;
+		animation: bounce 3s ease infinite, colors 1s ease infinite;
 
 		@keyframes bounce {
 			0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
 			40% {transform: translateY(-10px);}
 			60% {transform: translateY(-5px);}
+		}
+
+		@keyframes colors {
+			from { color: $gold-one }
+			to { color: $gold-six }
 		}
 	}
 

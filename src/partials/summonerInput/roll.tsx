@@ -37,7 +37,7 @@ const Roll = ({ summoners, setSummoners, options, setOptions }) => {
 
 	return (
 		<div className="w-100-p fs-24 mt-2 d-flex justify-content-center gap-2">
-			<Button className="px-3" theme={ButtonThemes.MAGIC} onClick={onSave}>
+			<Button className="px-3" theme={ButtonThemes.MAGIC} onClick={onSave} disabled={summoners.length === 0}>
 				<Icon iconType={IconType.DICE} iconSize={IconSize.SMALL} />
 				Roll
 			</Button>

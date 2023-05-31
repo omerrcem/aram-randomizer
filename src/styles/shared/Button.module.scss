@@ -18,7 +18,7 @@
 	}
 
 	&.magic {
-		transition: background-color .3s ease-in-out;
+		transition: all .3s ease-in-out;
 
 		background: linear-gradient(rgba($blue-seven, 1), rgba($blue-five, 1));
 		color: $gold-one;
@@ -26,6 +26,12 @@
 
 		&:hover {
 			background: linear-gradient(rgba($blue-six, 1), rgba($blue-four, 1));
+		}
+
+		&:disabled {
+			color: $grey-half;
+			border: 3px solid $grey-cool;
+			background: linear-gradient(rgba($blue-seven, 1), rgba($blue-six, 1));
 		}
 	}
 

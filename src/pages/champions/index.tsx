@@ -5,7 +5,11 @@ import { routes } from "@/shared/header";
 
 const Champions = ({ champs }) => {
 	return (
-		<Layout currentRoute={routes.CHAMPIONS}>
+		<Layout
+			title="All champions - Jaksho"
+			description="Get details of all champions in League of Legends. Use them in the randomizer!"
+			currentRoute={routes.CHAMPIONS}
+		>
 			<ChampionList champions={champs} />
 		</Layout>
 	)
