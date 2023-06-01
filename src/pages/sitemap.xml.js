@@ -17,7 +17,7 @@ function generateSiteMap(champs) {
        .map((name) => {
          return `
        <url>
-           <loc>${`${BASE_URL}/${name}`}</loc>
+           <loc>${`${BASE_URL}/champions/${name}`}</loc>
        </url>
      `;
        })
