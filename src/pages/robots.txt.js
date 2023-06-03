@@ -1,9 +1,13 @@
-function Ads() {
+function Robots() {
 };
 
 export async function getServerSideProps ({ res }) {
   	res.setHeader('Content-Type', 'text/plain');
-    res.write('google.com, pub-7181315815609537, DIRECT, f08c47fec0942fa0');
+    res.write(
+`User-agent: *
+Allow: /
+Sitemap: https://www.jaksho.com/sitemap.xml`
+		);
     res.end();
   
   	return {
@@ -11,4 +15,4 @@ export async function getServerSideProps ({ res }) {
     };
 };
 
-export default Ads;
+export default Robots;
