@@ -7,9 +7,11 @@ import Button, { ButtonThemes } from "@/shared/button";
 import Icon, { IconSize, IconType } from "@/shared/icon";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Skins from "@/partials/champion/detail/skins";
 
 const ChampionDetail = ({ champ }) => {
 	const router = useRouter();
+
 	return (
 		<Layout
 			title={`${champ.name}, ${champ.title} - Jaksho`}
@@ -39,6 +41,10 @@ const ChampionDetail = ({ champ }) => {
 							{champ.title}
 						</div>
 					</div>
+				</div>
+
+				<div className="row">
+					<Skins champData={champ} />
 				</div>
 
 				<div className="row">

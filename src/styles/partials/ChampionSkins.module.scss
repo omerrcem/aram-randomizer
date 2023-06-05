@@ -1,0 +1,53 @@
+@import "../hex/breakpoints.scss";
+@import "../variables.scss";
+
+.championSkins {
+	display: flex;
+	gap: 15px;
+	overflow-x: auto;
+	overflow-y:hidden;
+
+	&::-webkit-scrollbar {
+		display: none;
+	  }
+
+
+
+	.skin {
+		height: 230px;
+		width: auto;
+		cursor: pointer;
+		user-select: none;
+		border: 1px solid $grey-three;
+
+		&:hover {
+			border: 1px solid $gold-one;
+
+			img {
+				opacity: 1;
+			}
+		}
+
+		img {
+			pointer-events: none;
+			user-select: none;
+			height: 180px;
+			width: 180px;
+			opacity: 0.6;
+		}
+
+		.name {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			height: 50px;
+		}
+	}
+}
+
+.fullImage {
+	width: 100%;
+	aspect-ratio: 16/9;
+	margin: auto;
+}

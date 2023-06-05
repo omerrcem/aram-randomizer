@@ -130,7 +130,7 @@ export const getChamp = async (name, setCallback) => {
 	});
 };
 
-const getChampImageName = champ => {
+export const getChampImageName = champ => {
 	if (champ === 'Fiddlesticks') return 'FiddleSticks';
 	return champ;
 }
