@@ -23,7 +23,7 @@ const Skins = ({ champData }) => {
 			<span className="BeaufortBold text-primary border-bottom border-secondary pe-3 pb-1">
 				Skins 
 				<span className="fs-11 px-2 text-gold-three">
-					{`(${images.length - 1})`}
+					{`(${images.length})`}
 				</span>
 			</span>
 			{skinId && <>
