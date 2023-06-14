@@ -20,7 +20,6 @@ const Layout = ({
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7181315815609537" crossorigin="anonymous"></script>
 			</Head>
 			<div className={classNames(styles.layout)}>
 				<div className="container py-5">
